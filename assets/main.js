@@ -4,6 +4,7 @@ const signInBtn = document.getElementById("signInBtn");
     const closeForm = document.getElementById("closeForm");
     const closeSignIn = document.getElementById("closeSignIn");
     const closeLogin = document.getElementById("closeLogin");
+  
 
     const reservationForm = document.getElementById("reservationForm");
     const signInForm = document.getElementById("signInForm");
@@ -17,3 +18,5 @@ const signInBtn = document.getElementById("signInBtn");
 
     loginBtn.onclick = () => loginForm.style.display = "flex";
     closeLogin.onclick = () => loginForm.style.display = "none";
+
+  

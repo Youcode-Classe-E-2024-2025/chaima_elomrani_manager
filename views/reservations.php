@@ -1,21 +1,27 @@
+<?php
+include("controllers/affichage_reservations.php");
+include("controllers/delete_reservations.php");
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/table.css">
+    <link rel="stylesheet" href="assets/table.css">
     <title>Gestion des Réservations Professionnelles</title>
-  
+
+
 </head>
 
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
         <h1>Tableau de Bord</h1>
-        <a href="index.php?page=home">Salle</a>
-        <a href="index.php?page=home">Réservations</a>
-        <a href="index.php?page=home">Commentaire</a>
-        <a href="index.php?page=">Utilisateur</a>
+        <a href="index.php?page=rooms_management">Salle</a>
+        <a href="index.php?page=reservations">Réservations</a>
+        <a href="index.php?page=comments">Commentaire</a>
+        <a href="index.php?page=users_management">Utilisateur</a>
         <a href="index.php?page=home">Déconnexion</a>
     </div>
 
@@ -53,33 +59,25 @@
                 </tr>
             </thead>
             <tbody>
+                <?php 
+                 foreach($reservations as $row) {
+                ?>
                 <tr>
-                    <td>1</td>
-                    <td>12/06/2024</td>
-                    <td>2 heures</td>
-                    <td>
+                    <td><?= htmlspecialchars($row['id']); ?></td>
+                    <td><?= htmlspecialchars($row['durée']); ?></td>
+                    <td><?= htmlspecialchars($row['date_reservation']); ?></td>
+                    <td id="options">
                         <button class="btn confirm">Confirmer</button>
-                        <button class="btn cancel">Annuler</button>
+                        <form action="" id="btn-form" method="post"> 
+                        <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                        <button type="submit" class="btn cancel" name="delete">Annuler</button>
+                        </form> 
+                        
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>13/06/2024</td>
-                    <td>3 heures</td>
-                    <td>
-                        <button class="btn confirm">Confirmer</button>
-                        <button class="btn cancel">Annuler</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>14/06/2024</td>
-                    <td>1 heure</td>
-                    <td>
-                        <button class="btn confirm">Confirmer</button>
-                        <button class="btn cancel">Annuler</button>
-                    </td>
-                </tr>
+               <?php
+                 }
+               ?>
             </tbody>
         </table>
     </div>

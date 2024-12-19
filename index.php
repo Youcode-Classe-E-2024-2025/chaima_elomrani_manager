@@ -12,6 +12,6 @@ if (isset($_GET['action'])) {
 if (isset($_GET['page'])) {
     include_once "views/" . $_GET['page'] . ".php";
 } else {
-    include_once "views/rooms.php";
+    include_once "views/home.php";
 }
 

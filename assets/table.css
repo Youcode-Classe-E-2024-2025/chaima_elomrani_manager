@@ -188,3 +188,14 @@ tr:nth-child(even) {
 .btn.delete:hover {
     background-color: #e53935;
 }
+
+
+#options{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: start;
+
+}
+ 

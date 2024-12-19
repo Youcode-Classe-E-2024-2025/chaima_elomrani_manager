@@ -1,9 +1,13 @@
+<?php
+include("controllers/affichage_utilisateur.php");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/table.css">
+    <link rel="stylesheet" href="assets/table.css">
     <title>Gestion des Utilisateurs</title>
 
 </head>
@@ -11,11 +15,11 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <h1>Tableau de Bord</h1>
-        <a href="rooms_management.php">Salle</a>
-        <a href="reservations.php">Réservations</a>
-        <a href="comments.php">Commentaire</a>
-        <a href="users_management.php">Utilisateur</a>
-        <a href="home.php">Déconnexion</a>
+        <a href="index.php?page=rooms_management">Salle</a>
+        <a href="index.php?page=reservations">Réservations</a>
+        <a href="index.php?page=comments">Commentaire</a>
+        <a href="index.php?page=users_management">Utilisateur</a>
+        <a href="index.php?page=home">Déconnexion</a>
     </div>
 
     <!-- Main Content -->
@@ -53,36 +57,22 @@
                 </tr>
             </thead>
             <tbody>
+                <?php 
+                foreach($utilisateur as $row){
+                ?>
                 <tr>
-                    <td>1</td>
-                    <td>Jean Dupont</td>
-                    <td>jean.dupont@example.com</td>
-                    <td>******</td>
+                    <td><?= htmlspecialchars($row['id_utilisateur']); ?></td>
+                    <td><?= htmlspecialchars($row['nom']); ?></td>
+                    <td><?= htmlspecialchars($row['email']); ?></td>
+                    <td><?= htmlspecialchars($row['mot_de_passe']); ?></td>
                     <td>
                         <button class="btn authorize">Autoriser</button>
                         <button class="btn block">Bloquer</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Marie Curie</td>
-                    <td>marie.curie@example.com</td>
-                    <td>******</td>
-                    <td>
-                        <button class="btn authorize">Autoriser</button>
-                        <button class="btn block">Bloquer</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Albert Einstein</td>
-                    <td>albert.einstein@example.com</td>
-                    <td>******</td>
-                    <td>
-                        <button class="btn authorize">Autoriser</button>
-                        <button class="btn block">Bloquer</button>
-                    </td>
-                </tr>
+              <?php 
+              }
+              ?>
             </tbody>
         </table>
     </div>
